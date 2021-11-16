@@ -1,7 +1,7 @@
 fn range(int, start, end) {
 end
 | equal(int) < start ?
-  | list(int) < 0.
+  | list(int).
   | sub(int) < 1
   | range(int, start)
   | append(int) < end.
