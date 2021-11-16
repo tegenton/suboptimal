@@ -1,0 +1,27 @@
+fn range(int, start, end) {
+end
+| equal(int) < start ?
+  | list(int) < 0.
+  | sub(int) < 1
+  | range(int, start)
+  | append(int) < end.
+;
+
+fn fizzbuzz(int, reg) {
+reg
+| mod(int) < 15
+| equal(int) < 0 ?
+  | replace() < "fizzbuzz".
+  | mod(int) < 5
+  | equal(int) < 0 ?
+    | replace() < "fizz".
+    | mod(int) < 3
+    | equal(int) < 0 ?
+      | replace() < "buzz".
+      | str(int).
+| print(str);
+
+fn main() {
+range(int) < 0, 100
+| int(list)
+| fizzbuzz(int);
