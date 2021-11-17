@@ -38,7 +38,7 @@ proc fizzbuzz : regout, regval {
   | divisors < 15, 3, 5 ?
     regout < "fizzbuzz" !
     regout < "fizz" !
-    regout < "fbuzz" !
+    regout < "buzz" !
     
     regval
     | str > regout !
