@@ -22,7 +22,7 @@ sub iseven(val) =
 
 proc main: reg {
   
-  MINIMUM
+  MINIMUM > reg
   | range < MAXIMUM
   | iseven ?
     | printnum !
