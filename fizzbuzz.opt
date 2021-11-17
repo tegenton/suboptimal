@@ -5,34 +5,28 @@ MAXIMUM = 100;
 iter range(min)[max] =
   min
   | lte < max?
-     |>
-     !
-     $
-     !
-;
+     |> !
+     $ !
+  ;
 
 sub isdivisable(val)[div] = 
   val
   | mod < div
   | equal < 0 
-  >
+  | >
   ;
 
 branch:4 divisors(val)[div1, div2, div3] =
   val
   |isdivisible < div1 ?
-    $0
-    !
+    $0 !
     |isdivisible < div2?
-      $1
-      !
+      $1 !
       |isdivisble < div3?
-        $2
-        !
-        $3
-        !
-      !
+        $2 !
+        $3 !
     !
+  !
   ;
 
   
@@ -43,15 +37,12 @@ proc fizzbuzz : regout, regval {
   | range < MAXIMUM
   | tee > regval
   | divisors < 15, 3, 5 ?
-    regout < "fizz"
-    !
-    regout < "buzz"
-    !
-    regout < "fizzbuzz"
-    !
+    regout < "fizz" !
+    regout < "buzz" !
+    regout < "fizzbuzz" !
+    
     regval
-    | str > regout
-    !
+    | str > regout !
   ;
 
   regout
