@@ -8,13 +8,14 @@ inline int range(int *a, int max){
   return 0;
 }
 
-inline int iseven(int val){
-  return !(val%2)
+inline int iseven(int *val){
+  return !(val%2);
 }
 
 int main(void){
- int val = MINIMUM;
- while (range(&val, MAXIMUM)){
+ void * val;
+ *val = MINIMUM;
+ while (range(val, MAXIMUM)){
    if (iseven(val)){
      printf("%d\n", val);
    }
