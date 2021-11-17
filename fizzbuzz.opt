@@ -1,27 +1,64 @@
-fn range(int, start, end) {
-end
-| equal(int) < start ?
-  | list(int).
-  | sub(int) < 1
-  | range(int, start)
-  | append(int) < end.
+MINIMUM = 0
+MAXIMUM = 100
+
+
+iter range(min)[max] =
+  min
+  | lte < max?
+     |> .
+     $ .
 ;
 
-fn fizzbuzz(int, reg) {
-reg
-| mod(int) < 15
-| equal(int) < 0 ?
-  | replace() < "fizzbuzz".
-  | mod(int) < 5
-  | equal(int) < 0 ?
-    | replace() < "fizz".
-    | mod(int) < 3
-    | equal(int) < 0 ?
-      | replace() < "buzz".
-      | str(int).
-| print(str);
+sub isdivisable(val)[div] = 
+  val
+  | mod < div
+  | equal < 0 
+  > ;
 
-fn main() {
-range(int) < 0, 100
-| int(list)
-| fizzbuzz(int);
+branch divisors(val)[div1, div2, div3] =
+  val
+  |isdivisible < div1 ?
+    $0 .
+    |isdivisible < div2?
+      $1 .
+      |isdivisble < div3?
+        $2 .
+        $3 . . .
+    
+
+  
+
+proc fizzbuzz {
+regmin, regmax, reg3, reg5, reg15, regfizz, regbuzz, regfizzbuzz, regout, regval
+{
+  regmin < MINIMUM
+  regmax < MAXIMUM
+  
+  reg3 < 3
+  reg5 < 5
+  reg15 < 15
+  
+  regfizz < "fizz"
+  regbuzz < "buzz"
+  regfizzbuzz< "fizzbuzz"
+  
+  
+  regmin
+  | range < reg2
+  | tee > regval
+  | divisors < reg15, reg3, reg5 ?
+    regout < regfizz .
+    
+    regout < regbuzz .
+    
+    regout < regfizzbuzz .
+    
+    regval
+    | str > regout .
+  ;
+
+  regout
+  | print 
+  ;
+
+proc main = fizzbuzz
