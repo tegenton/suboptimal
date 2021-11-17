@@ -30,13 +30,11 @@ sub printeven(val)[even_reg] {
     NULL_REG > !
   ;
 
-proc main: reg1, reg2, reg3 {
-  reg1 < MINIMUM;
-  reg2 < MAXIMUM;
+proc main: reg {
   
-  reg1
-  | range < reg2
-  | printeven <reg3
+  MINIMUM
+  | range < MAXIMUM
+  | printeven <reg
   | isnull ?
     $ !
     | printnum !
