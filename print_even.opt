@@ -7,7 +7,7 @@ MAXIMUM = 100;
 iter range(min)[max] =
   min
   | lte < max?
-     |> !
+     | inc > !
      $ !
 ;
      
