@@ -33,13 +33,12 @@ branch:4 divisors(val)[div1, div2, div3] =
 
 proc fizzbuzz : regout, regval {
   
-  MINIMUM
+  MINIMUM > regval
   | range < MAXIMUM
-  | tee > regval
   | divisors < 15, 3, 5 ?
-    regout < "fizz" !
-    regout < "buzz" !
     regout < "fizzbuzz" !
+    regout < "fizz" !
+    regout < "fbuzz" !
     
     regval
     | str > regout !
