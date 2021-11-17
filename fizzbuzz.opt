@@ -5,26 +5,35 @@ MAXIMUM = 100
 iter range(min)[max] =
   min
   | lte < max?
-     |> .
-     $ .
+     |>
+     .
+     $
+     .
 ;
 
 sub isdivisable(val)[div] = 
   val
   | mod < div
   | equal < 0 
-  > ;
+  >
+  ;
 
-branch divisors(val)[div1, div2, div3] =
+branch:4 divisors(val)[div1, div2, div3] =
   val
   |isdivisible < div1 ?
-    $0 .
+    $0
+    .
     |isdivisible < div2?
-      $1 .
+      $1
+      .
       |isdivisble < div3?
-        $2 .
-        $3 . . .
-    
+        $2
+        .
+        $3
+        .
+      .
+    .
+  ;
 
   
 
@@ -44,17 +53,18 @@ regmin, regmax, reg3, reg5, reg15, regfizz, regbuzz, regfizzbuzz, regout, regval
   
   
   regmin
-  | range < reg2
+  | range < regmax
   | tee > regval
   | divisors < reg15, reg3, reg5 ?
-    regout < regfizz .
-    
-    regout < regbuzz .
-    
-    regout < regfizzbuzz .
-    
+    regout < regfizz
+    .
+    regout < regbuzz
+    .
+    regout < regfizzbuzz
+    .
     regval
-    | str > regout .
+    | str > regout
+    .
   ;
 
   regout
