@@ -3,7 +3,7 @@
 
 inline int range(int *a, int max){
   if (*a<=max){
-     return ++a;
+     return ++*a;
   }
   return 0;
 }
