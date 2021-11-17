@@ -20,22 +20,11 @@ sub iseven(val) =
   
 ;
 
-sub printeven(val)[even_reg] {
-  val
-  | iseven > even_reg;
-  
-  even_reg
-  | ?
-    val > !
-    NULL_REG > !
-  ;
-
 proc main: reg {
   
   MINIMUM
   | range < MAXIMUM
-  | printeven <reg
-  | isnull ?
-    $ !
+  | iseven ?
     | printnum !
+    $ !
   ;
