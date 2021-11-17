@@ -1,14 +1,14 @@
 //Print sum of even numbers [0,100]
 
-MINIMUM = 0
-MAXIMUM = 100
+MINIMUM = 0;
+MAXIMUM = 100;
 
 
 iter range(min)[max] =
   min
   | lte < max?
-     |> .
-     $ .
+     |> !
+     $ !
 ;
      
      
@@ -26,17 +26,18 @@ sub printeven(val)[even_reg] {
   
   even_reg
   | ?
-    val > .
-    NULL_REG > .
+    val > !
+    NULL_REG > !
+  ;
 
 proc main: reg1, reg2, reg3 {
-  reg1 < MINIMUM
-  reg2 < MAXIMUM
+  reg1 < MINIMUM;
+  reg2 < MAXIMUM;
   
   reg1
   | range < reg2
   | printeven <reg3
   | isnull ?
-    $ .
-    | printnum . 
-;
+    $ !
+    | printnum !
+  ;
