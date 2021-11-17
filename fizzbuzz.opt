@@ -1,5 +1,5 @@
-MINIMUM = 0
-MAXIMUM = 100
+MINIMUM = 0;
+MAXIMUM = 100;
 
 
 iter range(min)[max] =
@@ -37,30 +37,17 @@ branch:4 divisors(val)[div1, div2, div3] =
 
   
 
-proc fizzbuzz {
-regmin, regmax, reg3, reg5, reg15, regfizz, regbuzz, regfizzbuzz, regout, regval
-{
-  regmin < MINIMUM
-  regmax < MAXIMUM
+proc fizzbuzz : regout, regval {
   
-  reg3 < 3
-  reg5 < 5
-  reg15 < 15
-  
-  regfizz < "fizz"
-  regbuzz < "buzz"
-  regfizzbuzz< "fizzbuzz"
-  
-  
-  regmin
-  | range < regmax
+  MINIMUM
+  | range < MAXIMUM
   | tee > regval
-  | divisors < reg15, reg3, reg5 ?
-    regout < regfizz
+  | divisors < 15, 3, 5 ?
+    regout < "fizz"
     .
-    regout < regbuzz
+    regout < "buzz"
     .
-    regout < regfizzbuzz
+    regout < "fizzbuzz"
     .
     regval
     | str > regout
@@ -71,4 +58,4 @@ regmin, regmax, reg3, reg5, reg15, regfizz, regbuzz, regfizzbuzz, regout, regval
   | print 
   ;
 
-proc main = fizzbuzz
+proc main = fizzbuzz;
