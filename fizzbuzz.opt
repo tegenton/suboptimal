@@ -31,7 +31,7 @@ branch:4 divisors(val)[div1, div2, div3] =
 
   
 
-proc fizzbuzz : regout, regval {
+proc fizzbuzz : regout, regval = {
   
   MINIMUM > regval
   | range < MAXIMUM
@@ -48,4 +48,5 @@ proc fizzbuzz : regout, regval {
   | print 
   ;
 
+}
 proc main = fizzbuzz;
