@@ -23,17 +23,17 @@ proc normalize: reg_vec = {
   new vec3 > norm_vec;
   
   reg_vec.X
-  | multi < normal_factor
+  | multi < normal_factor(reg_vec)
   |> reg_vec.X
   ;
   
   reg_vec.Y
-  | multi < normal_factor
+  | multi < normal_factor(reg_vec)
   |> reg_vec.Y
   ;
   
   reg_vec.Z
-  | multi < normal_factor
+  | multi < normal_factor(reg_vec)
   |> reg_vec.Z
   ;
   }
