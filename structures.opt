@@ -1,3 +1,6 @@
+proc print_vec: vec;
+proc normalize: reg_vec;
+
 struct vec3 = {
   normalize = normalize;
   print = print_vec;
@@ -6,7 +9,7 @@ struct vec3 = {
   Z;
 }
 
-proc print_vec(vec) =
+proc print_vec: vec =
   "< %lf, %lf, %lf>"
   | printf < vec.X, vec.Y, vec.Z;
 
@@ -44,6 +47,6 @@ proc main: reg_vec = {
   reg_vec.Y < 9.1;
   reg_vec.Z < 3.3;
   
-  reg_vec.normalize;
-  reg_vec.print;
+  reg_vec:normalize;
+  reg_vec:print;
 }
