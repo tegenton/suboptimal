@@ -1,44 +1,38 @@
 struct vec3 = {
   normalize = normalize;
+  print = print_vec;
   X;
   Y;
   Z;
 }
 
-branch:4 sq3(val) =
-  val
-    |&3?
-      |square
-      | $0!
-      |square
-      | $1!
-      |square
-      | $2!
- ;
 
-sub magnitude(vec) = 
+
+sub normal_factor(vec) = 
   reg_vec.X
-  | add reg_vec.Y
-  | add reg_vec.Z
+  | square
+  | add < square(reg_vec.Y)
+  | add < square(reg_vec.Z)
   | inv_sqrt
-  | b3 ? } sum
-  | sqrt;
+  | > $;
 
 
 
 proc normalize: reg_vec {
+  new vec3 > norm_vec;
+  
   reg_vec.X
-  | div < magnitude < reg_vec
+  | normal_factor
   |> reg_vec.X
   ;
   
   reg_vec.Y
-  | div < magnitude < reg_vec
+  | normal_factor
   |> reg_vec.Y
   ;
   
   reg_vec.Z
-  | div < magnitude < reg_vec
+  | normal_factor
   |> reg_vec.Z
   ;
   }
