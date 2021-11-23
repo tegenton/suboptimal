@@ -42,3 +42,12 @@ proc normalize: reg_vec {
   |> reg_vec.Z
   ;
   }
+
+proc main: reg_vec = {
+  reg_vec < new vec3;
+  reg_vec.X < 4.5;
+  reg_vec.Y < 9.1;
+  reg_vec.Z < 3.3;
+  
+  reg_vec.normalize;
+}
