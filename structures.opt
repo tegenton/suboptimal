@@ -24,20 +24,12 @@ sub normal_factor(vec)[] =
 
 method normalize(vec)[] = {
   
-  vec.X
-  | multi < normal_factor(vec)
-  |> vec.X
-  ;
+  vec.X <|> mult < normal_factor(vec);
+
   
-  vec.Y
-  | multi < normal_factor(vec)
-  |> vec.Y
-  ;
+  vec.Y <|> mult < normal_factor(vec);
   
-  vec.Z
-  | multi < normal_factor(vec)
-  |> vec.Z
-  ;
+  vec.Z <|> mult < normal_factor(vec);
   }
 
 proc main: reg_vec = {
