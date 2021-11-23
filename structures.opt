@@ -6,7 +6,9 @@ struct vec3 = {
   Z;
 }
 
-
+proc print_vec(vec) =
+  "< %lf, %lf, %lf>"
+  | printf < vec.X, vec.Y, vec.Z;
 
 sub normal_factor(vec) = 
   reg_vec.X
@@ -14,11 +16,10 @@ sub normal_factor(vec) =
   | add < square(reg_vec.Y)
   | add < square(reg_vec.Z)
   | inv_sqrt
-  | > $;
+  | >
+  ;
 
-
-
-proc normalize: reg_vec {
+proc normalize: reg_vec = {
   new vec3 > norm_vec;
   
   reg_vec.X
@@ -44,4 +45,5 @@ proc main: reg_vec = {
   reg_vec.Z < 3.3;
   
   reg_vec.normalize;
+  reg_vec.print;
 }
