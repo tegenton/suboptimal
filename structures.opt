@@ -1,5 +1,5 @@
-proc print_vec: vec;
-proc normalize: reg_vec;
+method print_vec(vec)[];
+method normalize(vec)[];
 
 struct vec3 = {
   normalize = normalize;
@@ -9,11 +9,11 @@ struct vec3 = {
   Z;
 }
 
-proc print_vec: vec =
+method print_vec(vec)[] =
   "< %lf, %lf, %lf>"
   | printf < vec.X, vec.Y, vec.Z;
 
-sub normal_factor(vec) = 
+sub normal_factor(vec)[] = 
   vec.X
   | square
   | add < square(vec.Y)
@@ -22,22 +22,21 @@ sub normal_factor(vec) =
   | >
   ;
 
-proc normalize: reg_vec = {
-  new vec3 > norm_vec;
+method normalize(vec)[] = {
   
-  reg_vec.X
-  | multi < normal_factor(reg_vec)
-  |> reg_vec.X
+  vec.X
+  | multi < normal_factor(vec)
+  |> vec.X
   ;
   
-  reg_vec.Y
-  | multi < normal_factor(reg_vec)
-  |> reg_vec.Y
+  vec.Y
+  | multi < normal_factor(vec)
+  |> vec.Y
   ;
   
-  reg_vec.Z
-  | multi < normal_factor(reg_vec)
-  |> reg_vec.Z
+  vec.Z
+  | multi < normal_factor(vec)
+  |> vec.Z
   ;
   }
 
@@ -47,6 +46,6 @@ proc main: reg_vec = {
   reg_vec.Y < 9.1;
   reg_vec.Z < 3.3;
   
-  reg_vec:normalize;
-  reg_vec:print;
+  reg_vec.normalize;
+  reg_vec.print;
 }
