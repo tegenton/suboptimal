@@ -11,10 +11,10 @@ proc print_vec(vec) =
   | printf < vec.X, vec.Y, vec.Z;
 
 sub normal_factor(vec) = 
-  reg_vec.X
+  vec.X
   | square
-  | add < square(reg_vec.Y)
-  | add < square(reg_vec.Z)
+  | add < square(vec.Y)
+  | add < square(vec.Z)
   | inv_sqrt
   | >
   ;
@@ -23,17 +23,17 @@ proc normalize: reg_vec = {
   new vec3 > norm_vec;
   
   reg_vec.X
-  | normal_factor
+  | multi < normal_factor
   |> reg_vec.X
   ;
   
   reg_vec.Y
-  | normal_factor
+  | multi < normal_factor
   |> reg_vec.Y
   ;
   
   reg_vec.Z
-  | normal_factor
+  | multi < normal_factor
   |> reg_vec.Z
   ;
   }
