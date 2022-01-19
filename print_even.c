@@ -1,23 +1,22 @@
+#include <stdio.h>
 #define MINIMUM 0
 #define MAXIMUM 100
 
-inline int range(int *a, int max){
-  if (*a<=max){
-     return ++*a;
-  }
-  return 0;
+static inline int range(int *a, int max){
+    return (*a)++<=max;
 }
 
-inline int iseven(int *val){
-  return !(val%2);
+static inline int iseven(int *val){
+  return !(*val%2);
 }
 
 int main(void){
- void * val;
- *val = MINIMUM;
+ int reg;
+ void * val = &reg;
+ *(int*)val = MINIMUM-1;
  while (range(val, MAXIMUM)){
    if (iseven(val)){
-     printf("%d\n", val);
+     printf("%d\n", *(int *)val);
    }
  }
 }
